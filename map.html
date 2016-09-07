@@ -3,8 +3,13 @@
 
 <head>
     <title>Findepto</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+
+
     <style>
     html,
     body {
@@ -12,7 +17,14 @@
         margin: 0;
         padding: 0;
     }
-    
+
+    .carousel-img{
+    width: 100%; /* use this, or not */
+    margin: auto;
+    }
+    .carousel-margin{
+        margin-bottom: 10px;
+    }
     #map {
         height: 100%;
     }
@@ -21,7 +33,30 @@
 
 <body>
     <div id="map"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Lerma 1543 <small class="text-muted"> Caballito</small> </h4>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid" id="modalcontent">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+
     <script>
+    var descHouseHtml;
+    $.get("housedesc.html", function( html ) {
+        $('#modalcontent').html(html);
+    });
     var map;
     var openedInfowindow = false;
 
@@ -34,7 +69,6 @@
             zoom: 14
         });
         var infoWindow = new google.maps.InfoWindow({
-            map: map,
             maxWidth: 120
         });
         openedInfowindow = infoWindow;
@@ -66,7 +100,7 @@
             });
             infoWindow.setContent('<h3> Bienvenido! </h3> Toca en una propiedad cercana para ver mas información');
         }
-
+        infoWindow.open(map);
         var houses = [];
 
         houses.push({
@@ -104,7 +138,7 @@
     }
 
     function drawHouse(house) {
-
+/*
         var contentString = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
@@ -120,7 +154,9 @@
             '(last visited June 22, 2009).</p>' +
             '</div>' +
             '</div>';
+*/
 
+        contentString = descHouseHtml;
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
@@ -143,12 +179,15 @@
         });
 
         marker.addListener('click', function() {
-            if (openedInfowindow) {
+           /* if (openedInfowindow) {
                 openedInfowindow.close();
             }
             openedInfowindow = infowindow;
             infowindow.open(map, marker);
+            */
+            $('#myModal').modal('show');
         });
+           // $('#myModal').modal('show');
 
     }
 
