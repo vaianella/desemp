@@ -1,0 +1,88 @@
+<!-- <section layout="row">
+<md-content layout="row" flex="66" layout-wrap>
+    <md-card ng-repeat="d in $ctrl.dates" ng-class="$ctrl.getColor($index)" class="md-whiteframe-z2" flex flex-sm="40" flex-xs="100">
+        <md-card-content>
+            <h2>{{d.k | date:'dd-MMM-yyyy'}}</h2>
+            <p layout="column">
+                <md-button class="md-primary md-raised" 
+                ng-repeat="i in d.v"
+                ng-click="$ctrl.showAdvanced(i)"
+                ng-disabled="!i.active"
+                flex>
+                    {{i.date | date:'h:mma'}}
+                </md-button>
+            </p>
+        </md-card-content>
+        <md-card-footer></md-card-footer>
+    </md-card>
+    
+</md-content>
+<md-card class="md-whiteframe-z2" flex="33">
+    <md-card-content>
+        <h2>Booked Appointments</h2>
+        <p layout="column" ng-repeat="a in $ctrl.appointments">
+            {{a.name}} ({{a.phone}}) => {{a.date | date:'dd-MMM-yyyy @ h:mma'}}
+        </p>
+    </md-card-content>
+    <md-card-footer></md-card-footer>
+</md-card>
+</section> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Findepto!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <style type="text/css">
+    .row .row {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .row {
+      margin-bottom: 20px;
+    }
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+
+      display: flex;
+      align-items: center;
+    }
+    body {
+        margin: 0;
+        background: url("concrete_seamless.png") repeat;
+    } 
+    </style>
+</head>
+
+
+<body>
+<div class="container">
+
+
+      <div class="page-header text-center ">
+        <h1 style="font-family:'Lobster';font-size:56px">Findepto</h1>
+        <br>
+        <p class="text-center lead">Estamos trabajando para que estes a un solo paso de tu próxima casa!</p>
+        <br>
+
+      </div>
+
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</html>
