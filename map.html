@@ -147,10 +147,10 @@
             map: map,
             icon: image,
         });
-	$('#myModalLabel').html(house.direccion);
 
-        marker.addListener('click', function() {
+        marker.addListener('click', function(house) {
             $('#myModal').modal('show');
+	    $('#myModalLabel').html(house.direccion);
         });
         markers.push(marker);
     }
