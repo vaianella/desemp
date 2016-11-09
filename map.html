@@ -147,6 +147,7 @@
             map: map,
             icon: image,
         });
+	$('#myModalLabel').html(house.direccion);
 
         marker.addListener('click', function() {
             $('#myModal').modal('show');
