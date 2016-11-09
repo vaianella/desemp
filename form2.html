@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Findepto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <style type="text/css">
+    .row .row {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .row {
+      margin-bottom: 20px;
+    }
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+
+      display: flex;
+      align-items: center;
+    }
+    body {
+        margin: 0;
+        background: url("concrete_seamless.png") repeat;
+    } 
+    </style>
+</head>
+
+
+<body>
+<div class="container">
+
+
+      <div class="page-header text-center ">
+        <h1 style="font-family:'Lobster';font-size:56px">Findepto</h1>
+        <p class="text-center lead">Decinos que estas buscando</p>
+      </div>
+
+        
+  <form id="propfilter">
+    <div class="form-group">
+      <label for="tipo">Tipo de propiedad</label>
+      <div class="btn-group btn-group-justified" id="tipo" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="options" id="option1" > <span>Casa</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2" checked> <span>Departamento</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3"> <span>PH</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3"> <span>Otro</span>
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="ambs">Ambientes</label>
+      <div class="btn-group btn-group-justified" id="ambs" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="options" id="option1" checked> <span>1</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2"> <span>2</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3"> <span>3</span>
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3"> <span>mas</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ciudad">Ciudad</label>
+      <div class="input-group" id="ciudad">
+        <select class="selectpicker" multiple disabled data-style="btn-primary" title="Capital Federalf" data-live-search="true">
+            <option>Capital Federal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="barrios">Barrio</label>
+      <div class="input-group" id="barrios">
+        <select class="selectpicker" multiple data-style="btn-primary" data-live-search="true" title="Todos">
+            <option>Agronomía</option>
+            <option>Almagro</option>
+            <option>Balvanera</option>
+            <option>Barracas</option>
+            <option>Belgrano</option>
+            <option>Boedo</option>
+            <option>Caballito</option>
+            <option>Chacarita</option>
+            <option>Coghlan</option>
+            <option>Colegiales</option>
+            <option>Constitución</option>
+            <option>Flores</option>
+            <option>Floresta</option>
+            <option>La Boca</option>
+            <option>La Paternal</option>
+            <option>Liniers</option>
+            <option>Mataderos</option>
+            <option>Monserrat</option>
+            <option>Monte Castro</option>
+            <option>Nueva Pompeya</option>
+            <option>Núñez</option>
+            <option>Palermo</option>
+            <option>Parque Avellaneda</option>
+            <option>Parque Chacabuco</option>
+            <option>Parque Chas</option>
+            <option>Parque Patricios</option>
+            <option>Puerto Madero</option>
+            <option>Recoleta</option>
+            <option>Retiro</option>
+            <option>Saavedra</option>
+            <option>San Cristóbal</option>
+            <option>San Nicolás</option>
+            <option>San Telmo</option>
+            <option>Vélez Sársfield</option>
+            <option>Versalles</option>
+            <option>Villa Crespo</option>
+            <option>Villa del Parque</option>
+            <option>Villa Devoto</option>
+            <option>Villa General Mitre</option>
+            <option>Villa Lugano</option>
+            <option>Villa Luro</option>
+            <option>Villa Ortúzar</option>
+            <option>Villa Pueyrredón</option>
+            <option>Villa Real</option>
+            <option>Villa Riachuelo</option>
+            <option>Villa Santa Rita</option>
+            <option>Villa Soldati</option>
+            <option>Villa Urquiza</option>
+          </select>
+        </div>    
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="minAmount">Precio desde</label>
+      <div class="input-group">
+        <div class="input-group-addon">U$S</div>
+        <input type="text" class="form-control" id="minAmount" placeholder="Precio desde">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="maxAmount">Precio hasta</label>
+      <div class="input-group">
+        <div class="input-group-addon">U$S</div>
+        <input type="text" class="form-control" id="maxAmount" placeholder="Precio hasta">
+      </div>
+    </div>
+
+    <button id="searchProps" type="submit" class="btn btn-lg btn-block btn-success">Buscar!</button>
+  </form>
+    
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+        $("#searchProps").click(function(){
+
+          var filter ={};
+          filter.tipo = $('#tipo .btn.active span').html();
+          filter.ambs = $('#ambs .btn.active span').html();
+          filter.barrios = $('#barrios button span').html();
+          filter.precioDesde = $('#minAmount').val();
+          filter.precioHasta = $('#maxAmount').val();
+          var filters = [];
+          console.log(filter);
+          for(i in filter){
+            if(filter[i])
+             filters.push( "" + i + "=" + filter[i]);
+          }
+          var filterString = filters.join("&");
+          window.location.href = "map.html" + location.search + "&" + filterString;
+          return false;
+        }); 
+      }); 
+  </script>
+</html>
