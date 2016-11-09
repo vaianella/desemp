@@ -37,8 +37,9 @@
     <meta charset="utf-8">
 
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <style type="text/css">
     .row .row {
@@ -59,7 +60,22 @@
         margin: 0;
         background: url("concrete_seamless.png") repeat;
     } 
+
     </style>
+
+    <link rel="stylesheet" type="text/css" href="zabuto_calendar.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+<script src="zabuto_calendar.min.js"></script>
+
 </head>
 
 
@@ -70,19 +86,133 @@
       <div class="page-header text-center ">
         <h1 style="font-family:'Lobster';font-size:56px">Findepto</h1>
         <br>
-        <p class="text-center lead">Estamos trabajando para que estes a un solo paso de tu próxima casa!</p>
+        <p class="text-center lead">Agendar visita</p>
         <br>
-
       </div>
+
+    
+      <div class="row">
+        <div class="col-xs-12">
+
+            <div id="date-popover" class="popover top"
+                 style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                <div class="arrow"></div>
+                <h3 class="popover-title" style="display: none;"></h3>
+
+                <div id="date-popover-content" class="popover-content"></div>
+            </div>
+
+            <div id="my-calendar"></div>
+
+            <script type="application/javascript">
+
+
+                $(document).ready(function () {
+                    $("#date-popover").popover({html: true, trigger: "manual"});
+                    $("#date-popover").hide();
+                    $("#date-popover").click(function (e) {
+                        $(this).hide();
+                    });
+
+                    $("#my-calendar").zabuto_calendar({
+                        action: function () {
+                            return myDateFunction(this.id, false);
+                        },
+                        action_nav: function () {
+                            return myNavFunction(this.id);
+                        },
+                              ajax: {
+                                    url: "data_calendario.json",
+                                    modal: false
+                      }
+                    });
+                });
+
+                function myDateFunction(id, fromModal) {
+                    $("#date-popover").hide();
+                    if (fromModal) {
+                        $("#" + id + "_modal").modal("hide");
+                    }
+                    var date = $("#" + id).data("date");
+                    var hasEvent = $("#" + id).data("hasEvent");
+                    if (hasEvent && !fromModal) {
+                        return false;
+                    }
+                    $("#date-popover-content").html('You clicked on date ' + date);
+                    $("#date-popover").show();
+                    return true;
+                }
+
+                function myNavFunction(id) {
+                    $("#date-popover").hide();
+                    var nav = $("#" + id).data("navigation");
+                    var to = $("#" + id).data("to");
+                    console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+                }
+            </script><br><br>
+</div>
+<div id="reservacion">
+<div class="col-xs-6">
+
+            <div class="form-group">
+      <div class="input-group" id="turnos">
+        <select class="selectpicker" data-style="btn-primary" title="Seleccione un turno">
+            <option disabled>08:00</option>
+            <option disabled>08:30</option>
+            <option disabled>09:00</option>
+            <option disabled>09:30</option>
+                        <option disabled>10:00</option>
+            <option>10:30</option>
+                        <option>11:00</option>
+            <option>11:30</option>
+                        <option>12:00</option>
+            <option disabled>12:30</option>
+                        <option disabled>13:00</option>
+            <option disabled>13:30</option>
+                        <option disabled>14:00</option>
+            <option>14:30</option>
+                        <option>15:00</option>
+            <option>15:30</option>
+                        <option>16:00</option>
+            <option disabled>16:30</option>
+                        <option>17:00</option>
+            <option>17:30</option>
+                        <option>18:00</option>
+            <option disabled>18:30</option>
+            <option disabled>19:00</option>
+            <option disabled>19:30</option>
+            <option disabled>20:00</option>
+            <option disabled>20:30</option>
+          </select>
+        </div>    
+    </div>
+
+    </div>
+
+    <div class="col-xs-6">    <button id="searchProps" type="submit" class="btn btn-md btn-block btn-primary">Reservar!</button>
+</div></div>
+
+        </div>
+    </div>
 
 </div>
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+ <script type="text/javascript">
+     $(document).ready(function () {
 
+        $('#reservacion').hide();
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        $(".day").click(function(){
+
+          $('#reservacion').show();
+        }); 
+        $("#searchProps").click(function(){
+
+          window.location.href = "gracias.html";
+          return false;
+        }); 
+      }); 
+  </script>
 
 </html>
